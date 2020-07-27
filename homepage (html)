@@ -1,0 +1,28 @@
+<html lang="en">
+    <head>
+      <meta charset="utf-8">
+      <title>SNAKEGAME</title>
+      <link rel="stylesheet" href="homepage-snakegame.css">
+      <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@669&display=swap" rel="stylesheet">
+
+
+<body>
+  <header>
+    <h1> THE SNAKEGAME</h1>
+        <div class=center>
+          <h4> HOW TO PLAY </h4>
+             <p> Use ↥ to move snake up.  </p>
+             <p> Use ↓ to move snake down. </p>
+             <p> Use ← to move snake left.</p>
+             <p> Use → to move snake right. </p>
+             <p> When ever the snakes eats an apple, the score increases by 1. </p>
+        </div>
+
+        <div class="container">
+        <a href="form.html">
+          <button class="button">START GAME</button>
+        </div>
+
+  </header>
+</body>
+</html>
