@@ -1,5 +1,12 @@
 canvas {
-  background-color: rgb(243, 243, 243);
+  background-image: url(https://media.giphy.com/media/z619OZp86JaBG/giphy.gif);
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  margin: 0 auto;
+  text-align: center;
+
+  /* background-color: rgb(243, 243, 243); */
 
   padding-left: 0;
   padding-right: 0;

@@ -9,8 +9,12 @@ let dots;
 let news_x;
 let news_y;
 
-const pHeight = 25;
-const pWidth = 25;
+const pHeight = 50;
+const pWidth = 50;
+
+let faceMap = new Map;
+let faceArray = new Array;
+faceArray.push(trumpHead);
 
 let leftDirection = false;
 let rightDirection = true;
@@ -18,12 +22,13 @@ let upDirection = false;
 let downDirection = false;
 let inGame = true;
 
-const DOT_SIZE = 10;
+const DOT_SIZE = 50;
 const ALL_DOTS = 900;
-const MAX_RAND = 29;
+const MAX_RANDX = 19;
+const MAX_RANDY = 15;
 const DELAY = 140;
-const C_HEIGHT = 500;
-const C_WIDTH = 500;
+const C_HEIGHT = 800;
+const C_WIDTH = 1000;
 
 const LEFT_KEY = 37;
 const RIGHT_KEY = 39;
@@ -45,13 +50,63 @@ function init() {
 }
 function loadImages(){
   trumpHead = new Image();
-  trumpHead.src = 'apple.png';
+  trumpHead.src = 'trump_25.png';
 
   trumpTail = new Image();
-  trumpTail.src = 'apple.png';
+  trumpTail.src = 'fake.jpg';
 
   eatNews = new Image();
-  eatNews.src = 'apple.png';
+  eatNews.src = 'fake.jpg';
+
+  devos = new Image();
+  devos.src = 'devos.png';
+  faceMap.set(0,devos);
+
+
+  carson = new Image();
+  carson.src = 'carson.png';
+  faceMap.set(1,carson);
+
+  barr = new Image();
+  barr.src ='bar.png';
+  faceMap.set(2,barr);
+
+  giulani = new Image();
+  giulani.src = 'giulani.png';
+  faceMap.set(3, giulani);
+
+  pompeo = new Image();
+  pompeo.src = 'pompeo.png';
+  faceMap.set(4, pompeo);
+
+  chao = new Image();
+  chao.src = 'chao.png';
+  faceMap.set(5, chao);
+
+  mnuchin = new Image();
+  mnuchin.src = 'mnuchin.png';
+  faceMap.set(6, mnuchin);
+
+  kushner = new Image();
+  kushner.src = 'kushner.png';
+  faceMap.set(7, kushner);
+
+  trumpjr = new Image();
+  trumpjr.src = 'trumpjr.png';
+  faceMap.set(8, trumpjr);
+
+  ross = new Image();
+  ross.src = 'ross.png';
+  faceMap.set(9, ross);
+
+  pence = new Image();
+  pence.src = 'pence.png';
+  faceMap.set(10, pence);
+
+
+
+
+
 }
 
 function createSnake() {
@@ -63,9 +118,15 @@ function createSnake() {
   }
 }
 
+function tailPicture(){
+  let choice = Math.floor(Math.random()*10)
+  faceArray.push(faceMap.get(choice));
+}
+
 function checkApple(){
   if((x[0]== news_x)&&(y[0] == news_y)){
     dots++;
+    tailPicture();
     locateApple();
   }
 }
@@ -83,7 +144,11 @@ function doDrawing() {
           if (z == 0) {
               ctx.drawImage(trumpHead, x[z], y[z], pWidth, pHeight);
           } else {
-              ctx.drawImage(trumpTail, x[z], y[z], pWidth, pHeight);
+
+            console.log(faceArray);
+            console.log(z);
+            console.log(faceArray[z]);
+              ctx.drawImage(faceArray[z], x[z], y[z], pWidth, pHeight);
           }
       }
   } else {
@@ -125,11 +190,14 @@ function move(){
 
 function checkCollision(){
   for (let z = dots; z > 0; z--){
-   if((z > 4 && x[0] == x[z])&&(y[0] == y[z])){
+   if((z > 4) && (x[0] == x[z])&&(y[0] == y[z])){
      inGame = False;
    }
   }
 if (y[0] >= C_HEIGHT){
+  inGame = false;
+}
+if (y[0] < 0){
   inGame = false;
 }
 if (x[0] >= C_WIDTH){
@@ -138,14 +206,15 @@ if (x[0] >= C_WIDTH){
 if(x[0] < 0){
   inGame = false;
 }
+
 }
 
 function locateApple() {
 
-  let r = Math.floor(Math.random() * MAX_RAND);
+  let r = Math.floor(Math.random() * MAX_RANDX);
   news_x = r * DOT_SIZE;
 
-  r = Math.floor(Math.random() * MAX_RAND);
+  r = Math.floor(Math.random() * MAX_RANDY);
   news_y = r * DOT_SIZE;
 }
 
